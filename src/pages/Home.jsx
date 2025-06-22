@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/parallax.css';
+
 export default function Home() {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffset(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen text-center px-4">
-      <h1 className="text-4xl font-bold mb-4">Hi, I’m Jemar 👋</h1>
-      <p className="text-lg max-w-xl">
+    <section
+      className="parallax-horizontal flex flex-col items-center justify-center min-h-screen text-center px-4"
+      style={{
+        backgroundPositionX: `${offset * -0.5}px` // moves background horizontally as you scroll
+      }}
+    >
+      <h1 className="text-4xl font-bold mb-4 text-white">Hi, I’m Jemar 👋</h1>
+      <p className="text-lg max-w-xl text-white">
         A passionate web developer building modern, scalable apps and exploring AI tools.
       </p>
       <a

@@ -1,0 +1,7 @@
+.parallax-horizontal {
+  background-image: url('/home-background-parallax.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  background-attachment: fixed;
+}
